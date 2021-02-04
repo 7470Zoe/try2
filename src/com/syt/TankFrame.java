@@ -6,6 +6,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
+	
+	int x = 200;
+	int  y  = 200;
 	public TankFrame() {
 		setVisible(true);
 		setSize(800,600);
@@ -21,11 +24,15 @@ public class TankFrame extends Frame {
 		});		
 	}
 
+	//只要对这个窗口有操作,比如移动,都会调用这个方法
 	@Override
 	public void paint(Graphics g) {
 		// TODO 自动生成的方法存根
 		System.out.println("Graphics ");
-		g.fillRect(200, 200, 50, 50);
+		g.fillRect(x, y, 50, 50);
+		x+=10;
+		y+=10;
+		
 	}
 	
 }
