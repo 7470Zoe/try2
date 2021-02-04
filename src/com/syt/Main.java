@@ -5,10 +5,13 @@ import java.awt.Frame;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		TankFrame tf = new TankFrame();
 		
-		// TODO 自动生成的方法存根
+		while(true) {
+			Thread.sleep(50);
+			tf.repaint();
+		}
 
 	}
 
