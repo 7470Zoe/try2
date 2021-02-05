@@ -9,10 +9,10 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 	
-	int x = 200;
-	int  y  = 200;
-	Dir dir ;
-	private static final int speed = 10;
+	
+	Tank aTank = new Tank(200,200,Dir.DOWN);
+	Tank bTank = new Tank(200,200,Dir.DOWN);
+	
 	public TankFrame() {
 		setVisible(true);
 		setSize(800,600);
@@ -33,23 +33,7 @@ public class TankFrame extends Frame {
 	//只要对这个窗口有操作,比如移动,都会调用这个方法
 	@Override
 	public void paint(Graphics g) {
-		// TODO 自动生成的方法存根
-//		System.out.println("Graphics ");
-		g.fillRect(x, y, 50, 50);
-		switch(dir) {
-		case LEFT:
-			x-=speed;
-			break;
-		case RIGHT:
-			x+=speed;
-			break;
-		case UP:
-			y-=speed;
-			break;
-		case DOWN:
-			y+=speed;
-			break;
-		}	
+		aTank.paint(g);
 	}
 	
 	//键盘监听处理类   是一个命名的内部类
@@ -108,14 +92,15 @@ public class TankFrame extends Frame {
 		
 
 		private void setMainTankDir() {
-			// TODO 自动生成的方法存根
-			if(bL)dir = Dir.LEFT;
-			if(bU)dir = Dir.UP;
-			if(bR)dir = Dir.RIGHT;
-			if(bD)dir = Dir.DOWN;
-		}
+			if(bL)aTank.setDir(Dir.LEFT);
+			if(bU)aTank.setDir(Dir.UP) ;
+			if(bR)aTank.setDir(Dir.RIGHT) ;
+			if(bD)aTank.setDir(Dir.DOWN)  ;
+		
 		
 	}
-	
-	
+	}
 }
+	
+	
+
