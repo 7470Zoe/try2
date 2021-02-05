@@ -11,6 +11,8 @@ public class TankFrame extends Frame {
 	
 	int x = 200;
 	int  y  = 200;
+	Dir dir ;
+	private static final int speed = 10;
 	public TankFrame() {
 		setVisible(true);
 		setSize(800,600);
@@ -34,9 +36,20 @@ public class TankFrame extends Frame {
 		// TODO 自动生成的方法存根
 //		System.out.println("Graphics ");
 		g.fillRect(x, y, 50, 50);
-//		x+=10;
-//		y+=10;
-		
+		switch(dir) {
+		case LEFT:
+			x-=speed;
+			break;
+		case RIGHT:
+			x+=speed;
+			break;
+		case UP:
+			y-=speed;
+			break;
+		case DOWN:
+			y+=speed;
+			break;
+		}	
 	}
 	
 	//键盘监听处理类   是一个命名的内部类
@@ -65,8 +78,10 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
+			setMainTankDir();
 			
 		}
+
 
 		//抬起键盘的时候应该给设置为false
 		@Override
@@ -88,6 +103,16 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
+			setMainTankDir();
+		}
+		
+
+		private void setMainTankDir() {
+			// TODO 自动生成的方法存根
+			if(bL)dir = Dir.LEFT;
+			if(bU)dir = Dir.UP;
+			if(bR)dir = Dir.RIGHT;
+			if(bD)dir = Dir.DOWN;
 		}
 		
 	}
