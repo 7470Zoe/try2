@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Tank {
 	private int x,y;
 	Dir dir =Dir.DOWN;
-	private static final int speed = 10;
+	private static final int speed = 5;
 	private boolean moving = false;
 	
 	public boolean isMoving() {
@@ -37,7 +37,6 @@ public class Tank {
 	}
 
 	private void move() {
-		// TODO 自动生成的方法存根
 		if(!moving)return;
 		switch(dir) {
 		case LEFT:

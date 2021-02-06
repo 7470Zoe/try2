@@ -12,6 +12,7 @@ public class TankFrame extends Frame {
 	
 	Tank aTank = new Tank(200,200,Dir.DOWN);
 	Tank bTank = new Tank(200,200,Dir.DOWN);
+	Bullet b = new Bullet(300,300,Dir.DOWN);
 	
 	public TankFrame() {
 		setVisible(true);
@@ -34,6 +35,7 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 		aTank.paint(g);
+		 b.paint(g);
 	}
 	
 	//键盘监听处理类   是一个命名的内部类
