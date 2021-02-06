@@ -1,7 +1,9 @@
 package com.syt;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -9,6 +11,7 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 	
+	static final int GAME_WIDTH=800,GAME_HEIGHT=600;
 	
 	Tank aTank = new Tank(200,200,Dir.DOWN);
 	Tank bTank = new Tank(200,200,Dir.DOWN);
@@ -16,7 +19,7 @@ public class TankFrame extends Frame {
 	
 	public TankFrame() {
 		setVisible(true);
-		setSize(800,600);
+		setSize(GAME_WIDTH,GAME_HEIGHT);
 		setResizable(false);
 		setTitle("tank war");
 		this.addKeyListener(new MyKeyListener());
@@ -29,6 +32,23 @@ public class TankFrame extends Frame {
 				System.exit(0);
 			}					
 		});		
+	}
+	
+//	解决闪烁问题
+	Image offScreenImage = null;
+
+	@Override
+	public void update(Graphics g) {
+		if (offScreenImage == null) {
+			offScreenImage = this.createImage(GAME_WIDTH, GAME_HEIGHT);
+		}
+		Graphics gOffScreen = offScreenImage.getGraphics();
+		Color c = gOffScreen.getColor();
+		gOffScreen.setColor(Color.BLACK);
+		gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+		gOffScreen.setColor(c);
+		paint(gOffScreen);
+		g.drawImage(offScreenImage, 0, 0, null);
 	}
 
 	//只要对这个窗口有操作,比如移动,都会调用这个方法
