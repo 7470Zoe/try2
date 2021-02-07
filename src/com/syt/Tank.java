@@ -8,6 +8,8 @@ public class Tank {
 	Dir dir =Dir.DOWN;
 	private static final int speed = 5;
 	private boolean moving = false;
+	//tank类中new出的子弹,想要放在在tankframe中的话,tank类必须能访问tankframe这个对象,就是要持有这个对象的引用
+	private TankFrame tf;
 	
 	public boolean isMoving() {
 		return moving;
@@ -17,11 +19,12 @@ public class Tank {
 		this.moving = moving;
 	}
 
-	public Tank(int x, int y, Dir dir) {
+	public Tank(int x, int y, Dir dir,TankFrame tf) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.tf = tf;
 	}
 	
 	public Dir getDir() {
@@ -57,6 +60,9 @@ public class Tank {
 			break;
 		}	
 		
+	}
+	public void fire() {
+		tf.bullet =new Bullet(this.x,y,this.dir);
 	}
 
 	

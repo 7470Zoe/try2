@@ -13,9 +13,8 @@ public class TankFrame extends Frame {
 	
 	static final int GAME_WIDTH=800,GAME_HEIGHT=600;
 	
-	Tank aTank = new Tank(200,200,Dir.DOWN);
-	Tank bTank = new Tank(200,200,Dir.DOWN);
-	Bullet b = new Bullet(300,300,Dir.DOWN);
+	Tank aTank = new Tank(200,200,Dir.DOWN,this);
+	Bullet bullet = new Bullet(300,300,Dir.DOWN);
 	
 	public TankFrame() {
 		setVisible(true);
@@ -34,7 +33,7 @@ public class TankFrame extends Frame {
 		});		
 	}
 	
-//	解决闪烁问题
+//	用双缓冲解决闪烁问题
 	Image offScreenImage = null;
 
 	@Override
@@ -55,7 +54,7 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 		aTank.paint(g);
-		 b.paint(g);
+		bullet.paint(g);
 	}
 	
 	//键盘监听处理类   是一个命名的内部类
@@ -105,6 +104,9 @@ public class TankFrame extends Frame {
 				break;
 			case KeyEvent.VK_DOWN:
 				bD=false;
+				break;
+			case KeyEvent.VK_ENTER:
+				aTank.fire();
 				break;
 			default:
 				break;
