@@ -8,14 +8,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 	
 	static final int GAME_WIDTH=800,GAME_HEIGHT=600;
 	
 	Tank aTank = new Tank(200,200,Dir.DOWN,this);
-	Bullet bullet = new Bullet(300,300,Dir.DOWN);
-	
+//	Bullet bullet = new Bullet(300,300,Dir.DOWN);
+	List<Bullet>bullets =new ArrayList<>();
 	public TankFrame() {
 		setVisible(true);
 		setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -53,8 +55,18 @@ public class TankFrame extends Frame {
 	//只要对这个窗口有操作,比如移动,都会调用这个方法
 	@Override
 	public void paint(Graphics g) {
+		Color c = g.getColor();
+		g.setColor(Color.WHITE);
+		g.drawString("子弹的数量"+ bullets.size(), 10,60);
+		
+		
+		
 		aTank.paint(g);
-		bullet.paint(g);
+//		bullet.paint(g);
+		for(int i = 0;i<bullets.size();i++) {
+			bullets.get(i).paint(g);
+		}
+	
 	}
 	
 	//键盘监听处理类   是一个命名的内部类
