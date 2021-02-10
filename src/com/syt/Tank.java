@@ -10,6 +10,8 @@ public class Tank {
 	private boolean moving = false;
 	//tank类中new出的子弹,想要放在在tankframe中的话,tank类必须能访问tankframe这个对象,就是要持有这个对象的引用
 	private TankFrame tf;
+	public static int WIDTH = ResourceMgr.tankD.getWidth();
+	public static int HEIGHT = ResourceMgr.tankD.getHeight();
 	
 	public boolean isMoving() {
 		return moving;
@@ -80,7 +82,9 @@ public class Tank {
 		
 	}
 	public void fire() {
-		tf.bullets.add(new Bullet(this.x+22,y+22,this.dir,this.tf)) ;
+		int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+		int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+		tf.bullets.add(new Bullet(bX,bY,this.dir,this.tf)) ;
 	}
 
 	

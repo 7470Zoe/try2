@@ -5,7 +5,8 @@ import java.awt.Graphics;
 
 public class Bullet {
 	private static final int speed =15;
-	private static int WIDTH = 20,HEIGHT = 20;
+	public static int WIDTH = ResourceMgr.bulletD.getWidth();
+	public static int HEIGHT = ResourceMgr.bulletD.getHeight();
 	private Dir dir;
 	private int x,y;
 	//如果持续发子弹,持续往list里加子弹的话,早晚会造成内存溢出
