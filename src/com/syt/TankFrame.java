@@ -20,6 +20,7 @@ public class TankFrame extends Frame {
 //	Bullet bullet = new Bullet(300,300,Dir.DOWN);
 	List<Bullet>bullets =new ArrayList<>();
 	List<Bullet>bullets2 =new ArrayList<>();
+	List<Tank>enemis =new ArrayList<>();
 	public TankFrame() {
 		setVisible(true);
 		setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -72,6 +73,10 @@ public class TankFrame extends Frame {
 		}
 		for(int i = 0;i<bullets2.size();i++) {
 			bullets.get(i).paint(g);
+		}
+//		敌方坦克
+		for(int i = 0;i<enemis.size();i++) {
+			enemis.get(i).paint(g);
 		}
 //		如下会报ConcurrentModificationException
 //		for(Bullets b:bullets) {
