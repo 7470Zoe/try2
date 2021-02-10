@@ -12,12 +12,22 @@ public class Bullet {
 	private int x,y;
 	//如果持续发子弹,持续往list里加子弹的话,早晚会造成内存溢出
 	private boolean living = true;
-	private TankFrame tf;
+	private TankFrame tf = null;
+	private Group group = Group.BAD;
 	
-	public Bullet( int x, int y,Dir dir,TankFrame tf) {
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
+	public Bullet( int x, int y,Dir dir,Group group,TankFrame tf) {
 		this.dir = dir;
 		this.x = x;
 		this.y = y;
+		this.group = group;
 		this.tf = tf;
 	}
 	
