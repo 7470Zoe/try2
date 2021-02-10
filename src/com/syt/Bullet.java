@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Bullet {
-	private static final int speed =20;
+	private static final int speed =15;
 	private static int WIDTH = 20,HEIGHT = 20;
 	private Dir dir;
 	private int x,y;
@@ -24,9 +24,25 @@ public class Bullet {
 			tf.bullets.remove(this);
 		}
 		Color c= g.getColor();
-		g.setColor(Color.red);
-		g.fillOval(x, y, WIDTH, HEIGHT);
-		g.setColor(c);
+//		g.setColor(Color.red);
+//		g.fillOval(x, y, WIDTH, HEIGHT);
+//		g.setColor(c);
+		
+		switch (dir) {
+		case LEFT :
+			g.drawImage(ResourceMgr.bulletL, x, y,null);
+			break;
+		case RIGHT :
+			g.drawImage(ResourceMgr.bulletR, x, y,null);
+			break;
+		case UP :
+			g.drawImage(ResourceMgr.bulletU, x, y,null);
+			break;
+		case DOWN :
+			g.drawImage(ResourceMgr.bulletD, x, y,null);
+			break;
+	
+		}
 		move();
 		
 	}
