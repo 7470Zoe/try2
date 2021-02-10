@@ -16,8 +16,10 @@ public class TankFrame extends Frame {
 	static final int GAME_WIDTH=800,GAME_HEIGHT=600;
 	
 	Tank aTank = new Tank(200,200,Dir.DOWN,this);
+	Tank bTank = new Tank(400,400,Dir.DOWN,this);
 //	Bullet bullet = new Bullet(300,300,Dir.DOWN);
 	List<Bullet>bullets =new ArrayList<>();
+	List<Bullet>bullets2 =new ArrayList<>();
 	public TankFrame() {
 		setVisible(true);
 		setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -58,12 +60,17 @@ public class TankFrame extends Frame {
 		Color c = g.getColor();
 		g.setColor(Color.WHITE);
 		g.drawString("子弹的数量"+ bullets.size(), 10,60);
+		g.drawString("子弹的数量"+ bullets2.size(), 10,60);
 		
 		
 		
 		aTank.paint(g);
+		bTank.paint(g);
 //		bullet.paint(g);
 		for(int i = 0;i<bullets.size();i++) {
+			bullets.get(i).paint(g);
+		}
+		for(int i = 0;i<bullets2.size();i++) {
 			bullets.get(i).paint(g);
 		}
 //		如下会报ConcurrentModificationException
@@ -79,6 +86,15 @@ public class TankFrame extends Frame {
 		boolean bU= false;
 		boolean bR= false;
 		boolean bD= false;
+		
+		boolean b2L= false;
+		boolean b2U= false;
+		boolean b2R= false;
+		boolean b2D= false;
+		
+		
+		
+		
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -100,6 +116,25 @@ public class TankFrame extends Frame {
 				break;
 			}
 			setMainTankDir();
+			
+			
+			switch(key) {
+			case KeyEvent.VK_A:
+				b2L= true;
+				break;
+			case KeyEvent.VK_W:
+				b2U= true;
+				break;
+			case KeyEvent.VK_D:
+				b2R=true;
+				break;
+			case KeyEvent.VK_S:
+				b2D=true;
+				break;
+			default:
+				break;
+			}
+			setMainbTankDir();
 			
 		}
 
@@ -128,6 +163,28 @@ public class TankFrame extends Frame {
 				break;
 			}
 			setMainTankDir();
+			
+			
+			switch(key) {
+			case KeyEvent.VK_A:
+				b2L= false;
+				break;
+			case KeyEvent.VK_W:
+				b2U= false;
+				break;
+			case KeyEvent.VK_D:
+				b2R=false;
+				break;
+			case KeyEvent.VK_S:
+				b2D=false;
+				break;
+			case KeyEvent.VK_F1:
+				bTank.fire();
+				break;
+			default:
+				break;
+			}
+			setMainbTankDir();
 		}
 		
 
@@ -142,10 +199,22 @@ public class TankFrame extends Frame {
 			if(bU)aTank.setDir(Dir.UP);
 			if(bR)aTank.setDir(Dir.RIGHT);
 			if(bD)aTank.setDir(Dir.DOWN);
-		
-		
-		
 	}
+		
+		private void setMainbTankDir() {
+			if(!b2L&!b2R&!b2U&!b2D) {
+				bTank.setMoving(false);
+				}else {
+				bTank.setMoving(true);	
+			}
+			
+			if(b2L)bTank.setDir(Dir.LEFT);
+			if(b2U)bTank.setDir(Dir.UP);
+			if(b2R)bTank.setDir(Dir.RIGHT);
+			if(b2D)bTank.setDir(Dir.DOWN);
+	}
+		
+		
 	}
 }
 	
