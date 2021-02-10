@@ -19,8 +19,8 @@ public class TankFrame extends Frame {
 	Tank bTank = new Tank(200,800,Dir.DOWN,this);
 //	Bullet bullet = new Bullet(300,300,Dir.DOWN);
 	List<Bullet>bullets =new ArrayList<>();
-	List<Bullet>bullets2 =new ArrayList<>();
-	List<Tank>enemis =new ArrayList<>();
+//	List<Bullet>bullets2 =new ArrayList<>();
+	List<Tank>enemies =new ArrayList<>();
 	public TankFrame() {
 		setVisible(true);
 		setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -60,8 +60,11 @@ public class TankFrame extends Frame {
 	public void paint(Graphics g) {
 		Color c = g.getColor();
 		g.setColor(Color.WHITE);
-		g.drawString("子弹的数量"+ bullets.size(), 10,60);
-		g.drawString("子弹的数量"+ bullets2.size(), 10,60);
+		g.drawString("坦克子弹的数量"+ bullets.size(), 10,60);
+//		为了单独计算tank2的子弹数量导致代码增加许多,应该把重复代码都抽离出方法来
+//		g.drawString("坦克2子弹的数量"+ bullets2.size(), 10,75);
+		g.drawString("敌方坦克的的数量"+ enemies.size(), 10,90);
+		
 		
 		
 		
@@ -71,13 +74,25 @@ public class TankFrame extends Frame {
 		for(int i = 0;i<bullets.size();i++) {
 			bullets.get(i).paint(g);
 		}
-		for(int i = 0;i<bullets2.size();i++) {
-			bullets.get(i).paint(g);
-		}
+		/*
+		 * for(int i = 0;i<bullets2.size();i++) { bullets2.get(i).paint(g); }
+		 */
+		
 //		敌方坦克
-		for(int i = 0;i<enemis.size();i++) {
-			enemis.get(i).paint(g);
+		for(int i = 0;i<enemies.size();i++) {
+			enemies.get(i).paint(g);
 		}
+		
+//		判断子弹和坦克相撞
+		for(int i = 0;i<bullets.size();i++) {
+			for(int j = 0;j<enemies.size();j++) {
+				bullets.get(i).collideWith(enemies.get(j));
+			}
+		}
+		/*
+		 * for(int i = 0;i<bullets2.size();i++) { for(int j = 0;j<enemies.size();j++) {
+		 * bullets2.get(i).collideWith(enemies.get(j)); } }
+		 */
 //		如下会报ConcurrentModificationException
 //		for(Bullets b:bullets) {
 //			b.paint(g);
@@ -185,6 +200,7 @@ public class TankFrame extends Frame {
 				break;
 			case KeyEvent.VK_F1:
 				bTank.fire();
+//				bTank.fire2();
 				break;
 			default:
 				break;

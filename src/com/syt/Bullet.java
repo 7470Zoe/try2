@@ -2,6 +2,7 @@ package com.syt;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Bullet {
 	private static final int speed =15;
@@ -10,7 +11,7 @@ public class Bullet {
 	private Dir dir;
 	private int x,y;
 	//如果持续发子弹,持续往list里加子弹的话,早晚会造成内存溢出
-	private boolean live = true;
+	private boolean living = true;
 	private TankFrame tf;
 	
 	public Bullet( int x, int y,Dir dir,TankFrame tf) {
@@ -21,8 +22,9 @@ public class Bullet {
 	}
 	
 	public void paint(Graphics g) {
-		if(!live) {
+		if(!living) {
 			tf.bullets.remove(this);
+//			tf.bullets2.remove(this);
 		}
 		Color c= g.getColor();
 //		g.setColor(Color.red);
@@ -62,8 +64,25 @@ public class Bullet {
 			y+=speed;
 			break;
 		}
-		if(x<0||y<0||x>TankFrame.GAME_WIDTH||y>TankFrame.GAME_HEIGHT)live = false;
+		if(x<0||y<0||x>TankFrame.GAME_WIDTH||y>TankFrame.GAME_HEIGHT)living = false;
 		
+	}
+
+	public void collideWith(Tank tank) {
+		//子弹与坦克相撞的判断  Rectangle矩形 子弹的矩形
+		Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
+		Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
+		if(rect1.intersects(rect2)) {
+			this.die();
+			tank.die();
+		}
+		
+		
+	}
+
+	private void die() {
+	
+		this.living = false;
 	}
 
 

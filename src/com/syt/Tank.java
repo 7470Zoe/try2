@@ -5,13 +5,30 @@ import java.awt.Graphics;
 
 public class Tank {
 	private int x,y;
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 	Dir dir =Dir.DOWN;
 	private static final int speed = 5;
 	private boolean moving = false;
 	//tank类中new出的子弹,想要放在在tankframe中的话,tank类必须能访问tankframe这个对象,就是要持有这个对象的引用
 	private TankFrame tf;
+	private boolean living = true;
 	public static int WIDTH = ResourceMgr.tankD.getWidth();
 	public static int HEIGHT = ResourceMgr.tankD.getHeight();
+	
 	
 	public boolean isMoving() {
 		return moving;
@@ -37,6 +54,7 @@ public class Tank {
 	}
 
 	public void paint(Graphics g) {
+		if(!living) tf.enemies.remove(this);
 		Color c= g.getColor();
 		switch (dir) {
 		case LEFT :
@@ -85,6 +103,17 @@ public class Tank {
 		int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
 		int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
 		tf.bullets.add(new Bullet(bX,bY,this.dir,this.tf)) ;
+	}
+	/*
+	 * public void fire2() { int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2; int bY
+	 * = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2; tf.bullets2.add(new
+	 * Bullet(bX,bY,this.dir,this.tf)) ; }
+	 */
+
+
+	public void die() {
+		// TODO 自动生成的方法存根
+		this.living = false;
 	}
 
 	
