@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 public class ResourceMgr{
 	public static BufferedImage tankL,tankU,tankR,tankD,bulletL,bulletU,bulletR,bulletD;
-	public static  BufferedImage[] explode = new BufferedImage[16];
+	public static  BufferedImage[] explodes = new BufferedImage[16];
 	static {
 		try {
 			tankL=ImageIO.read( ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankL.gif"));
@@ -23,7 +23,7 @@ public class ResourceMgr{
 			bulletR=ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletR.gif"));
 			bulletD=ImageIO.read( ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletD.gif"));
 			for (int i = 0; i < 16; i++) {
-				ResourceMgr.class.getClassLoader().getResourceAsStream("images/e"+(i+1)+".gif");
+				explodes[i] = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e"+(i+1)+".gif"));
 			}
 
 		}
