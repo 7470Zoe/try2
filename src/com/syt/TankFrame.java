@@ -16,7 +16,7 @@ public class TankFrame extends Frame {
 	static final int GAME_WIDTH=1000,GAME_HEIGHT=900;
 	
 	Tank aTank = new Tank(600,800,Dir.DOWN,Group.GOOD,this);
-	Tank bTank = new Tank(200,800,Dir.DOWN,Group.GOOD,this);
+//	Tank bTank = new Tank(200,800,Dir.DOWN,Group.GOOD,this);
 //	Bullet bullet = new Bullet(300,300,Dir.DOWN);
 	List<Bullet>bullets =new ArrayList<>();
 //	List<Bullet>bullets2 =new ArrayList<>();
@@ -69,7 +69,7 @@ public class TankFrame extends Frame {
 		
 		
 		aTank.paint(g);
-		bTank.paint(g);
+//		bTank.paint(g);
 //		bullet.paint(g);
 		for(int i = 0;i<bullets.size();i++) {
 			bullets.get(i).paint(g);
@@ -154,7 +154,7 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
-			setMainbTankDir();
+//			setMainbTankDir();
 			
 		}
 
@@ -199,13 +199,13 @@ public class TankFrame extends Frame {
 				b2D=false;
 				break;
 			case KeyEvent.VK_F1:
-				bTank.fire();
+//				bTank.fire();
 //				bTank.fire2();
 				break;
 			default:
 				break;
 			}
-			setMainbTankDir();
+//			setMainbTankDir();
 		}
 		
 
@@ -222,18 +222,18 @@ public class TankFrame extends Frame {
 			if(bD)aTank.setDir(Dir.DOWN);
 	}
 		
-		private void setMainbTankDir() {
-			if(!b2L&!b2R&!b2U&!b2D) {
-				bTank.setMoving(false);
-				}else {
-				bTank.setMoving(true);	
-			}
-			
-			if(b2L)bTank.setDir(Dir.LEFT);
-			if(b2U)bTank.setDir(Dir.UP);
-			if(b2R)bTank.setDir(Dir.RIGHT);
-			if(b2D)bTank.setDir(Dir.DOWN);
-	}
+//		private void setMainbTankDir() {
+//			if(!b2L&!b2R&!b2U&!b2D) {
+//				bTank.setMoving(false);
+//				}else {
+//				bTank.setMoving(true);
+//			}
+//
+//			if(b2L)bTank.setDir(Dir.LEFT);
+//			if(b2U)bTank.setDir(Dir.UP);
+//			if(b2R)bTank.setDir(Dir.RIGHT);
+//			if(b2D)bTank.setDir(Dir.DOWN);
+//	}
 		
 		
 	}

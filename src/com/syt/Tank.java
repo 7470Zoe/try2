@@ -94,23 +94,23 @@ public class Tank {
 	}
 
 	private void move() {
+		if(r.nextInt(10)>8) this.fire();
 		if(!moving)return;
 		switch(dir) {
-		case LEFT:
+			case LEFT:
 			x-=speed;
 			break;
-		case RIGHT:
+			case RIGHT:
 			x+=speed;
 			break;
-		case UP:
+			case UP:
 			y-=speed;
 			break;
-		case DOWN:
+			case DOWN:
 			y+=speed;
 			break;
-		}	
-		if(r.nextInt(10)>8) this.fire();
-		
+		}
+
 	}
 	public void fire() {
 		int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
