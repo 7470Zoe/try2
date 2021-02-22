@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/test/image/timg.jpg</name>
+			<type>1</type>
+			<location>C:/Users/1/Desktop/timg.jpg</location>
+		</link>
+		<link>
+			<name>src/test/image/微信图片_20210119183429.jpg</name>
+			<type>1</type>
+			<location>C:/Users/1/Desktop/微信图片_20210119183429.jpg</location>
+		</link>
+	</linkedResources>
 </projectDescription>
