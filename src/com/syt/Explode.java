@@ -3,8 +3,8 @@ package com.syt;
 import java.awt.*;
 
 public class Explode {
-	//public static int WIDTH = ResourceMgr.explodes[10].getWidth();
-	//public static int HEIGHT = ResourceMgr.explodes[10].getHeight();
+	public static int WIDTH = ResourceMgr.explodes[10].getWidth();
+	public static int HEIGHT = ResourceMgr.explodes[10].getHeight();
 
 	private int x,y;
 	//如果持续发子弹,持续往list里加子弹的话,早晚会造成内存溢出
