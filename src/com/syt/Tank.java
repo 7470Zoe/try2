@@ -114,8 +114,8 @@ public class Tank {
 			y+=speed;
 			break;
 		}
-		if(this.group==Group.BAD&&r.nextInt(10)>9) this.fire();
-		if(this.group==Group.BAD)randomDir();
+		if(this.group==Group.BAD&&r.nextInt(100)>95) this.fire();
+		if(this.group==Group.BAD&&r.nextInt(20)>18)randomDir();
 	}
 	public void randomDir(){
 		//数组中的是随机出的下标
