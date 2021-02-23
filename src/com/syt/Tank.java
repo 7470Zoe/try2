@@ -23,7 +23,7 @@ public class Tank {
 	}
 	Dir dir =Dir.DOWN;
 	private static final int speed = 5;
-	private boolean moving = false;
+	private boolean moving = true;
 	//tank类中new出的子弹,想要放在在tankframe中的话,tank类必须能访问tankframe这个对象,就是要持有这个对象的引用
 	private TankFrame tf = null;
 	private boolean living = true;
@@ -39,7 +39,9 @@ public class Tank {
 	}
 	public static int WIDTH = ResourceMgr.tankD.getWidth();
 	public static int HEIGHT = ResourceMgr.tankD.getHeight();
-	
+	public void setLiving(boolean living) {
+		this.living = living;
+	}
 	
 	public boolean isMoving() {
 		return moving;
@@ -67,6 +69,7 @@ public class Tank {
 
 	public void paint(Graphics g) {
 		if(!living) tf.enemies.remove(this);
+
 		Color c= g.getColor();
 		switch (dir) {
 		case LEFT :
@@ -83,19 +86,20 @@ public class Tank {
 			break;
 	
 		}
-			
-			 
+
+		move();
 	
 		/*
 		 * g.setColor(Color.yellow); g.fillRect(x, y, 50, 50); g.setColor(c);
 		 */
-		move();
+
 		
 	}
 
 	private void move() {
-		if(r.nextInt(10)>8) this.fire();
+
 		if(!moving)return;
+		if(!living)return;
 		switch(dir) {
 			case LEFT:
 			x-=speed;
@@ -110,10 +114,15 @@ public class Tank {
 			y+=speed;
 			break;
 		}
-
+		if(this.group==Group.BAD&&r.nextInt(10)>9) this.fire();
+		if(this.group==Group.BAD)randomDir();
+	}
+	public void randomDir(){
+		//数组中的是随机出的下标
+		this.dir = Dir.values()[r.nextInt(4)];
 	}
 	public void fire() {
-		int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+		int bX = this.x + Tank.WIDTH/2 - Bullet. WIDTH/2;
 		int bY = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
 		tf.bullets.add(new Bullet(bX,bY,this.dir,this.group,this.tf)) ;
 	}
