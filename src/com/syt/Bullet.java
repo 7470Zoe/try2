@@ -87,6 +87,8 @@ public class Bullet {
 		if(rect1.intersects(rect2)) {
 			this.die();
 			tank.die();
+//			在碰撞检测的时候,会有爆炸
+			tf.explodes.add(new Explode(x,y,tf));
 		}
 		
 		

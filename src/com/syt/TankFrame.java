@@ -21,7 +21,9 @@ public class TankFrame extends Frame {
 	List<Bullet>bullets =new ArrayList<>();
 	List<Bullet>bullets2 =new ArrayList<>();
 	List<Tank>enemies =new ArrayList<>();
-	Explode explode = new Explode(600,800,this);
+	//这里new出爆炸的时候,list里是空的
+	List<Explode>explodes = new ArrayList<>();
+//	Explode explode = new Explode(600,800,this);
 
 	public TankFrame() {
 		setVisible(true);
@@ -66,8 +68,9 @@ public class TankFrame extends Frame {
 //		为了单独计算tank2的子弹数量导致代码增加许多,应该把重复代码都抽离出方法来
 //		g.drawString("坦克2子弹的数量"+ bullets2.size(), 10,75);
 		g.drawString("敌方坦克的的数量"+ enemies.size(), 10,90);
+		g.drawString("爆炸的数量"+ explodes.size(), 10,105);
 
-		explode.paint(g);
+//		explode.paint(g);
 		
 		
 		aTank.paint(g);
@@ -84,8 +87,12 @@ public class TankFrame extends Frame {
 		for(int i = 0;i<enemies.size();i++) {
 			enemies.get(i).paint(g);
 		}
+//		各处的爆炸
+		for(int i = 0;i<explodes.size();i++) {
+			explodes.get(i).paint(g);
+		}
 		
-//		判断子弹和坦克相撞
+//		判断子弹和坦克相撞的碰撞检测
 		for(int i = 0;i<bullets.size();i++) {
 			for(int j = 0;j<enemies.size();j++) {
 				bullets.get(i).collideWith(enemies.get(j));
@@ -157,7 +164,7 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
-//			setMainbTankDir();
+			setMainbTankDir();
 			
 		}
 
@@ -208,7 +215,7 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
-//			setMainbTankDir();
+			setMainbTankDir();
 		}
 		
 
@@ -225,18 +232,18 @@ public class TankFrame extends Frame {
 			if(bD)aTank.setDir(Dir.DOWN);
 	}
 		
-//		private void setMainbTankDir() {
-//			if(!b2L&!b2R&!b2U&!b2D) {
-//				bTank.setMoving(false);
-//				}else {
-//				bTank.setMoving(true);
-//			}
-//
-//			if(b2L)bTank.setDir(Dir.LEFT);
-//			if(b2U)bTank.setDir(Dir.UP);
-//			if(b2R)bTank.setDir(Dir.RIGHT);
-//			if(b2D)bTank.setDir(Dir.DOWN);
-//	}
+		private void setMainbTankDir() {
+			if(!b2L&!b2R&!b2U&!b2D) {
+				bTank.setMoving(false);
+				}else {
+				bTank.setMoving(true);
+			}
+
+			if(b2L)bTank.setDir(Dir.LEFT);
+			if(b2U)bTank.setDir(Dir.UP);
+			if(b2R)bTank.setDir(Dir.RIGHT);
+			if(b2D)bTank.setDir(Dir.DOWN);
+	}
 		
 		
 	}
