@@ -125,7 +125,6 @@ public class Tank {
 
 
 	public void die() {
-		// TODO 自动生成的方法存根
 		this.living = false;
 	}
 
