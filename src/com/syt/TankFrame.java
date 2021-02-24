@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TankFrame extends Frame {
+	//配置文件什么格式都可以,只要可以被解析
 	
 	static final int GAME_WIDTH=1000,GAME_HEIGHT=900;
 	

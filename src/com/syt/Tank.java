@@ -1,7 +1,6 @@
 package com.syt;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.Random;
 
 public class Tank {
@@ -29,6 +28,7 @@ public class Tank {
 	private boolean living = true;
 	private Random r =new Random();
 	private Group group = Group.BAD;
+	Rectangle rect = new Rectangle();
 
 	public Group getGroup() {
 		return group;
@@ -58,6 +58,11 @@ public class Tank {
 		this.dir = dir;
 		this.group = group;  
 		this.tf = tf;
+
+		rect.x = this.x;
+		rect.y = this.y;
+		rect.height = HEIGHT;
+		rect.width = WIDTH;
 	}
 	
 	public Dir getDir() {
@@ -114,11 +119,16 @@ public class Tank {
 			y+=speed;
 			break;
 		}
+
+
 		if(this.group==Group.BAD&&r.nextInt(100)>95) this.fire();
 		if(this.group==Group.BAD&&r.nextInt(20)>18)randomDir();
 
 //		在tank的move方法中做边界检测
 		boundsCheck();
+
+		rect.x = this.x;
+		rect.y = this.y;
 	}
 	public void boundsCheck(){
 //		x.和y指的是左上角
@@ -127,6 +137,7 @@ public class Tank {
 //		这个要包括tank自身的宽度和高度
 		if (this.x > TankFrame.GAME_WIDTH- Tank.WIDTH -2) x = TankFrame.GAME_WIDTH - Tank.WIDTH -2;
 		if (this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT -2 ) y = TankFrame.GAME_HEIGHT -Tank.HEIGHT -2;
+		//如果if语句下只有一句话要执行,一行代码,可以不加括号
 	}
 	public void randomDir(){
 		//数组中的是随机出的下标

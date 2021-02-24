@@ -14,6 +14,7 @@ public class Bullet {
 	private boolean living = true;
 	private TankFrame tf = null;
 	private Group group = Group.BAD;
+	Rectangle rect = new Rectangle();
 	
 	public Group getGroup() {
 		return group;
@@ -29,6 +30,10 @@ public class Bullet {
 		this.y = y;
 		this.group = group;
 		this.tf = tf;
+		rect.x = this.x;
+		rect.y = this.y;
+		rect.height = HEIGHT;
+		rect.width = WIDTH;
 	}
 	
 	public void paint(Graphics g) {
@@ -74,6 +79,10 @@ public class Bullet {
 			y+=speed;
 			break;
 		}
+		//当x和y有变化时,要同步更新rect的值
+		rect.x = this.x;
+		rect.y = this.y;
+
 		if(x<0||y<0||x>TankFrame.GAME_WIDTH||y>TankFrame.GAME_HEIGHT)living = false;
 		
 	}
@@ -81,10 +90,10 @@ public class Bullet {
 	public void collideWith(Tank tank) {
 		if(this.group == tank.getGroup()) return;
 		//子弹与坦克相撞的判断  Rectangle矩形 子弹的矩形
-		Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
-		Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
+//		Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
+//		Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
 		
-		if(rect1.intersects(rect2)) {
+		if(rect.intersects(tank.rect)) {
 			this.die();
 			tank.die();
 			int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
