@@ -209,7 +209,7 @@ public class TankFrame extends Frame {
 				b2D=false;
 				break;
 			case KeyEvent.VK_F1:
-//				bTank.fire();
+				bTank.fire();
 //				bTank.fire2();
 				break;
 			default:
