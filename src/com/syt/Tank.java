@@ -116,6 +116,17 @@ public class Tank {
 		}
 		if(this.group==Group.BAD&&r.nextInt(100)>95) this.fire();
 		if(this.group==Group.BAD&&r.nextInt(20)>18)randomDir();
+
+//		在tank的move方法中做边界检测
+		boundsCheck();
+	}
+	public void boundsCheck(){
+//		x.和y指的是左上角
+		if (this.x < 2) x = 2;
+		if (this.y < 28) y = 28;
+//		这个要包括tank自身的宽度和高度
+		if (this.x > TankFrame.GAME_WIDTH- Tank.WIDTH -2) x = TankFrame.GAME_WIDTH - Tank.WIDTH -2;
+		if (this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT -2 ) y = TankFrame.GAME_HEIGHT -Tank.HEIGHT -2;
 	}
 	public void randomDir(){
 		//数组中的是随机出的下标
