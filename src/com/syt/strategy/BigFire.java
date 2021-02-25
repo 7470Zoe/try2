@@ -1,8 +1,8 @@
 package com.syt.strategy;
 
-public class BigFire implements FireBullet{
+public class BigFire implements FireStrategy {
     @Override
-    public void fireBullet(){
+    public void fire(){
 
     }
 }

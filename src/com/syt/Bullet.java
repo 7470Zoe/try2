@@ -34,6 +34,8 @@ public class Bullet {
 		rect.y = this.y;
 		rect.height = HEIGHT;
 		rect.width = WIDTH;
+		//在子弹初始化的时候,就把子弹放到那个frame中的子弹里
+		tf.bullets.add(this);
 	}
 	
 	public void paint(Graphics g) {

@@ -1,8 +1,8 @@
 package com.syt.strategy;
 
-public class FourDirFire implements FireBullet{
+public class FourDirFire implements FireStrategy {
     @Override
-    public void fireBullet(){
+    public void fire(){
 
     }
 }
