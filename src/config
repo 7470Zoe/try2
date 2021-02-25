@@ -1,2 +1,6 @@
 #等号与其他之间不能有空格
 initTankCount=8
+tankSpeed=5
+bulletSpeed=10
+gameWidth=1080
+gameHeight=720
