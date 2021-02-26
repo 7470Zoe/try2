@@ -2,7 +2,8 @@ package com.syt.single;
 
 public class Single02 {
     //懒汉式,用到才加载,不用不加载
-    private static Single02 instance;
+    //这里要加volatile java汇编语句优化时,有语句重排,很频繁,不加volatile的话,会在没初始化的时候就返回这个instance  重点
+    private static volatile Single02 instance;
     private Single02(){}
 
 
