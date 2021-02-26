@@ -1,9 +1,15 @@
 package com.syt;
 
+import com.syt.strategy.DefaultFireStrategy;
+import com.syt.strategy.FireStrategy;
+import com.syt.strategy.FourDirFireStrategy;
+
 import java.awt.*;
 import java.util.Random;
 
 public class Tank {
+    //    FireStrategy fs = new DefaultFireStrategy();
+    FireStrategy fs;
     //策略模式
     //想要用的时候,把锦囊(),定义为要用的这个类的成员变量,或者让那个接口(FireStrategy)作为参数,传到这个类的fire方法中
     public int x, y;
@@ -69,6 +75,31 @@ public class Tank {
         rect.y = this.y;
         rect.height = HEIGHT;
         rect.width = WIDTH;
+
+        //在初始化的时候,判断一下tank是哪个阵营的 if else后只有一句话,可以省略大括号
+//        if (group == Group.GOOD) fs = new FourDirFireStrategy();
+        if (group == Group.GOOD){
+            String goodFSName = (String)PropertyMgr.get("goodFS");
+            //下面那句代表,把这个名字代表的类load到内存了,这个名字,类名,必须是全路径名  再new,就是new出了这个类的对象了
+
+            //也就是说,我只有能拿到这个类的全路径string,就能通过Class.forName(类的全路径string)拿到这个类,进而就能通过newInstance()获得到这个类的实例
+            //也就实现了通过config文件实现控制用哪个策略了
+
+//            .class文件原本在硬盘上,当程序运行时,会被加载(load)到内存里,  然后java中的class这个类,封装了 在内存中的.class所代表的 类的 属性和方法
+            try {
+                Class.forName(goodFSName).newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+//            fs = PropertyMgr.get("goodFS");//拿出来后是object
+        }
+
+        else fs = new DefaultFireStrategy();
+
     }
 
     public Dir getDir() {
@@ -154,9 +185,11 @@ public class Tank {
     }
 
     public void fire() {
-        int bX = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
+        fs.fire(this);
+        //如上,就调用了默认的fire方法
+/*        int bX = this.x + Tank.WIDTH / 2 - Bullet.WIDTH / 2;
         int bY = this.y + Tank.HEIGHT / 2 - Bullet.HEIGHT / 2;
-        tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf));
+        tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf));*/
     }
     /*
      * public void fire2() { int bX = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2; int bY

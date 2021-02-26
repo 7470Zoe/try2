@@ -4,3 +4,6 @@ tankSpeed=5
 bulletSpeed=10
 gameWidth=1080
 gameHeight=720
+#坦克的策略,可以用配置文件配置,直接按包名指定 接口的实现类
+goodFS=com.syt.tank.strategy.FourDirFireStrategy
+badFS=com.syt.tank.strategy.DefaultFireStrategy
