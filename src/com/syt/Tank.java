@@ -6,7 +6,7 @@ import java.util.Random;
 public class Tank {
     //策略模式
     //想要用的时候,把锦囊(),定义为要用的这个类的成员变量,或者让那个接口(FireStrategy)作为参数,传到这个类的fire方法中
-    int x, y;
+    public int x, y;
 
     public int getX() {
         return x;
@@ -24,14 +24,14 @@ public class Tank {
         this.y = y;
     }
 
-    Dir dir = Dir.DOWN;
+    public Dir dir = Dir.DOWN;
     private static final int speed = 5;
     private boolean moving = true;
     //tank类中new出的子弹,想要放在在tankframe中的话,tank类必须能访问tankframe这个对象,就是要持有这个对象的引用
-    TankFrame tf = null;
+    public TankFrame tf = null;
     private boolean living = true;
     private Random r = new Random();
-    private Group group = Group.BAD;
+    public Group group = Group.BAD;
     Rectangle rect = new Rectangle();
 
     public Group getGroup() {
