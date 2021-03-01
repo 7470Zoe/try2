@@ -1,4 +1,4 @@
-package com.syt.single;
+package com.syt.singleton;
 
 public enum Single {
     //完美单例,既线程安全.又效率

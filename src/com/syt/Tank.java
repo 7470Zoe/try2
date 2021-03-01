@@ -87,7 +87,7 @@ public class Tank {
 
 //            .class文件原本在硬盘上,当程序运行时,会被加载(load)到内存里,  然后java中的class这个类,封装了 在内存中的.class所代表的 类的 属性和方法
             try {
-                Class.forName(goodFSName).newInstance();
+                fs = (FireStrategy) Class.forName(goodFSName).newInstance();
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -98,7 +98,10 @@ public class Tank {
 //            fs = PropertyMgr.get("goodFS");//拿出来后是object
         }
 
-        else fs = new DefaultFireStrategy();
+        else{
+            //普通坦克的子弹fire是默认的
+            fs = new DefaultFireStrategy();
+        }
 
     }
 

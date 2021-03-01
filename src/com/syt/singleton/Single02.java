@@ -1,4 +1,4 @@
-package com.syt.single;
+package com.syt.singleton;
 
 public class Single02 {
     //懒汉式,用到才加载,不用不加载
