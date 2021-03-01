@@ -16,5 +16,13 @@ public class NvWa {
         human2.laugh();
         human2.eat();
         //如上是造了三种特定的人
+
+        //随机造不同种的人
+        for (int i = 0; i < 10; i++) {
+            Human human3 = HumanFactory.createHuman();
+            human3.cry();
+            human3.laugh();
+            human3.eat();
+        }
     }
 }
