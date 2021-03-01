@@ -1,8 +1,7 @@
 package com.syt;
 
-import com.syt.strategy.DefaultFireStrategy;
-import com.syt.strategy.FireStrategy;
-import com.syt.strategy.FourDirFireStrategy;
+import com.syt.StrategyPattern.DefaultFireStrategy;
+import com.syt.StrategyPattern.FireStrategy;
 
 import java.awt.*;
 import java.util.Random;

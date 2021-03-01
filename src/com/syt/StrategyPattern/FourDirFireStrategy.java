@@ -1,4 +1,4 @@
-package com.syt.strategy;
+package com.syt.StrategyPattern;
 
 import com.syt.Bullet;
 import com.syt.Dir;

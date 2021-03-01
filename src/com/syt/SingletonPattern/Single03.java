@@ -1,4 +1,4 @@
-package com.syt.singleton;
+package com.syt.SingletonPattern;
 
 public class Single03 {
     //由jvm 保证线程安全

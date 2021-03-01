@@ -1,4 +1,4 @@
-package com.syt.factoryMethod;
+package com.syt.FactoryMethodPattern;
 
 public class WhiteHuman implements Human{
     @Override

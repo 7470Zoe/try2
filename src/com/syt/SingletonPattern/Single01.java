@@ -1,4 +1,4 @@
-package com.syt.singleton;
+package com.syt.SingletonPattern;
 
 public class Single01 {
     //饿汉式

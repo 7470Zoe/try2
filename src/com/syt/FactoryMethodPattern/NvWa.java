@@ -1,4 +1,4 @@
-package com.syt.factoryMethod;
+package com.syt.FactoryMethodPattern;
 
 public class NvWa {
     //要使用工厂的时候

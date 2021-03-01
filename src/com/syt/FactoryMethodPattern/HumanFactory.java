@@ -1,6 +1,4 @@
-package com.syt.factoryMethod;
-
-import sun.misc.ClassLoaderUtil;
+package com.syt.FactoryMethodPattern;
 
 import java.util.HashMap;
 import java.util.List;
