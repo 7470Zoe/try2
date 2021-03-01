@@ -1,6 +1,6 @@
 package com.syt.AbstractFactoryPattern.A;
 
-public class WhiteMaleHuman extends AbstractYellowHuman {
+public class WhiteMaleHuman extends AbstractWhiteHuman {
     @Override
     public void gender() {
         System.out.println("该白种人的性别为男...");
