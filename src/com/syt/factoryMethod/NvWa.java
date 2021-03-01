@@ -3,15 +3,15 @@ package com.syt.factoryMethod;
 public class NvWa {
     //要使用工厂的时候
     public static void main(String[] args) {
-        Human human = HumanFactory.createHuman(WhiteHuman.class);
+        Human human = HumanFactory.createHuman1(WhiteHuman.class);
         human.cry();
         human.laugh();
         human.eat();
-        Human human1 = HumanFactory.createHuman(BlackHuman.class);
+        Human human1 = HumanFactory.createHuman1(BlackHuman.class);
         human1.cry();
         human1.laugh();
         human1.eat();
-        Human human2 = HumanFactory.createHuman(YellowHuman.class);
+        Human human2 = HumanFactory.createHuman1(YellowHuman.class);
         human2.cry();
         human2.laugh();
         human2.eat();
