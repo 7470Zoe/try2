@@ -1,6 +1,8 @@
 package com.syt.AbstractFactoryPattern.A;
 
 public abstract class AbstractYellowHuman implements Human {
+    //为什么用抽象类,因为不想现在就把具体的gender()方法实现
+
     @Override
     public void cry() {
         System.out.println("黄色人种会哭");

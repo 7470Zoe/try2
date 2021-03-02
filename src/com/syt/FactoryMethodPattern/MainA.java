@@ -1,8 +1,8 @@
 package com.syt.FactoryMethodPattern;
 
-public class Main {
+public class MainA {
     public static void main(String[] args) {
-        Car car = new Car();
-        car.go();
+        Vehicle v = new CarFactory().createcar();
+        v.go();
     }
 }
